@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footerLine" />
 
-      <div className="footerIcons" aria-label="Social links">
+      <nav className="footerIcons" aria-label="Social links">
         <Icon label="Instagram">
           <svg viewBox="0 0 24 24" width="18" height="18">
             <path fill="currentColor" d="..." />
@@ -25,7 +25,7 @@ export default function Footer() {
             <path fill="currentColor" d="..." />
           </svg>
         </Icon>
-      </div>
+      </nav>
 
       <div className="footerTitle">CAU COMP</div>
       <div className="footerText">
