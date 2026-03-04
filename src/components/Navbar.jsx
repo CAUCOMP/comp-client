@@ -1,4 +1,5 @@
 import "./Navbar.css";
+import {Link} from "react-router-dom"
 
 export default function Navbar() {
   return (
@@ -6,9 +7,9 @@ export default function Navbar() {
       <div className="navLeft">
         <div className="brandMark" aria-hidden="true" />
         <nav className="navLinks" aria-label="Top navigation">
-          <a href="#">아카이브</a>
-          <a href="#">프로젝트</a>
-          <a href="#">지원하기</a>
+          <Link to="#">아카이브</Link>
+          <Link to="#">프로젝트</Link>
+          <Link to="#">지원하기</Link>
         </nav>
       </div>
     </header>
