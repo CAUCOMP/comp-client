@@ -1,11 +1,10 @@
 import Navbar from "@/components/Navbar"
-import styles from "./MainLayout.module.css"
 
 const MainLayout = ({ children }) => {
   return (
-    <div className={styles.layout}>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className={styles.mainContent}>
+      <main className="pt-5">
         {children}
       </main>
     </div>
