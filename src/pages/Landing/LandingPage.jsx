@@ -1,6 +1,6 @@
 import ScrollBar from "@/components/ScrollBar";
 import HeroSection from "./sections/HeroSection";
-import IntroSection from "./sections/IntroSection";
+import AboutSection from "./sections/AboutSection";
 import { useState } from "react";
 
 const TOTAL = 3;
@@ -27,7 +27,7 @@ const LandingPage = () => {
           style={{transform: `translateY(-${current * 100}vh)`}}
         >
           <HeroSection />
-          <IntroSection />
+          <AboutSection />
         </div>
 
         {current < TOTAL -1 && (
