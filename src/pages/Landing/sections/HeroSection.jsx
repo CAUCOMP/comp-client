@@ -1,17 +1,16 @@
 import React from 'react'
-import styles from './HeroSection.module.css'
 import bgLogo from '@/assets/logo/bgLogo.png'
 
 const HeroSection = () => {
   return (
     <section 
-        className = {styles.heroSection}
-        style={{backgroundImage: `url(${bgLogo})`}}
+        className = "min-h-screen bg-no-repeat bg-center flex items-center"
+        style={{backgroundImage: `url(${bgLogo})`, backgroundSize: '100% 100%'}}
     >
-        <main className={styles.mainContent}>
-            <p>중앙대학교</p>
-            <p>웹/앱 개발동아리</p>
-            <p>COMP</p>
+        <main className="flex flex-col justify-center text-8xl font-semibold p-[45px]">
+            <div>중앙대학교</div>
+            <div>웹/앱 개발동아리</div>
+            <div>COMP</div>
         </main>
     </section>
   )
