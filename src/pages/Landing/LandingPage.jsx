@@ -2,6 +2,7 @@ import ScrollBar from "@/components/ScrollBar";
 import HeroSection from "./sections/HeroSection";
 import AboutSection from "./sections/AboutSection";
 import { useState } from "react";
+import FAQSection from "./sections/FAQSection";
 
 const TOTAL = 3;
 
@@ -28,6 +29,7 @@ const LandingPage = () => {
         >
           <HeroSection />
           <AboutSection />
+          <FAQSection />
         </div>
 
         {current < TOTAL -1 && (
