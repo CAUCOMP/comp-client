@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 const AttendanceNav = () => {
   return (
-    <nav className="fixed top-30 left-0 w-full z-10 px-10 py-5 flex items-center gap-8">
+    <nav className="fixed top-[80px] left-0 w-full z-10 px-10 pb-5 flex items-center gap-8 bg-[#000925] pt-10">
       
       <NavLink 
         to="/attendance"

@@ -8,7 +8,7 @@ const NavLink = ({ to, children }) => (
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 left-0 w-full z-10 bg-[#001228] p-7 flex items-center justify-between text-[18px]">
+    <header className="fixed top-0 left-0 w-full z-10 bg-[#000925] p-7 flex items-center justify-between text-[18px]">
       <div className="flex flex-row items-center gap-6">
         <div className="text-3xl" aria-hidden="true" >
           <NavLink to="/">&lt;OM/&gt;</NavLink>
