@@ -1,13 +1,20 @@
 import React from 'react'
 import bgLogo from '@/assets/logo/bgLogo.png'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = () => {
 
+  }
+
+  const handleHome = () => {
+    navigate('/')
   }
 
   return (
@@ -16,7 +23,8 @@ const LoginPage = () => {
       <img 
         src={bgLogo} 
         alt="배경 로고"
-        className="w-125 pt-10 object-contain"
+        onClick={handleHome}
+        className="w-125 pt-10 object-contain cursor-pointer"
       />
 
     <form>
