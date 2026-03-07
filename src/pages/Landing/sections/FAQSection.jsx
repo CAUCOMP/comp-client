@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FaChevronDown } from 'react-icons/fa'
+import { FiChevronDown, FiHelpCircle } from 'react-icons/fi'
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(null)
@@ -28,8 +28,16 @@ const FAQSection = () => {
   }
 
   return (
-    <section className="min-h-screen p-40 flex flex-col items-center gap-10">
-      <h1 className="text-4xl">자주 묻는 질문</h1>
+    <section className="min-h-screen p-30 flex flex-col items-center gap-10 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+      
+      <div className="text-center flex flex-col items-center gap-2 mb-4">
+        <div className="w-10 h-10 rounded-full border border-blue-400/30 bg-blue-500/10 flex items-center justify-center drop-shadow-[0_0_10px_rgba(96,165,250,0.3)]">
+          <FiHelpCircle className="text-blue-300 text-lg" />
+        </div>
+        <p className="text-blue-300/60 text-sm tracking-widest uppercase">FAQ</p>
+        <h1 className="text-4xl font-semibold">자주 묻는 질문</h1>
+      </div>
 
       {questions.map((question, index) => (
         <article key={index} className="w-full">
@@ -38,14 +46,14 @@ const FAQSection = () => {
             className="w-full flex justify-between items-center py-4 cursor-pointer"
             onClick={() => handleToggle(index)}
           >
-            <h2 className="font-medium text-[28px]">{question.question}</h2>
-            <FaChevronDown
+            <h2 className="text-[24px]">{question.question}</h2>
+            <FiChevronDown
               className={`transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
             />
           </button>
 
           <div className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-[500px]' : 'max-h-0'}`}>
-            <p className="font-light text-[20px] whitespace-pre-line pb-4">
+            <p className="font-light text-[20px] whitespace-pre-line pb-4 text-white/80">
               {question.answer}
             </p>
           </div>
