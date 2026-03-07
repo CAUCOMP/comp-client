@@ -7,6 +7,10 @@ import AttendancePage from "@/pages/attendance/AttendancePage";
 import StudySubmitPage from "@/pages/attendance/StudySubmitPage";
 import AttendanceStatusPage from "@/pages/attendance/AttendanceStatusPage";
 import ApplyPage from "./pages/ApplyPage";
+import SignupPage from "./pages/SignupPage";
+import GalleryPage from "./pages/archive/GalleryPage";
+import ProjectPage from "./pages/ProjectPage";
+import OBPage from "./pages/archive/OBPage";
 
 function App() {
   return (
@@ -14,6 +18,9 @@ function App() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/apply" element={<ApplyPage />} />
+        <Route path="/archive/gallery" element={<GalleryPage />} />
+        <Route path="/archive/ob" element={<OBPage />} />
+        <Route path="/projects" element={<ProjectPage />} />
 
         <Route element={<AttendanceLayout />}>
           <Route path="/attendance" element={<AttendancePage />} />
@@ -25,8 +32,8 @@ function App() {
       </Route>
 
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
 
-      {/* <Route path="/archive/gallery" element={<GalleryPage />} /> */}
 
     </Routes>
   );
