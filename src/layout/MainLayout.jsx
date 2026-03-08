@@ -1,14 +1,20 @@
-import { Outlet } from "react-router-dom";
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar"
+import { Outlet, useLocation } from "react-router-dom";
 
-export default function MainLayout() {
+const MainLayout = () => {
+  const location = useLocation()
+  const isLanding = location.pathname === '/'
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-
-      <main className="flex-1 pt-[96px]">
+      <main className="pt-5">
         <Outlet />
       </main>
+      {!isLanding && <Footer />}
     </div>
-  );
+  )
 }
+
+export default MainLayout
