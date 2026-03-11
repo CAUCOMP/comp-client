@@ -33,7 +33,7 @@ const LandingPage = () => {
   
   return (
     <div 
-      className="h-screen"
+      className="h-screen overflow-hidden"
       // 마우스휠 감지해서 휠로도 위아래 섹션 이동 가능 (마우스 움직이는 만큼 스크롤할건지 섹션이동시킬건지)
       //onWheel={(e) => e.deltaY > 0 ? handleNext() : handlePrev()}
       onWheel={handleWheel}
