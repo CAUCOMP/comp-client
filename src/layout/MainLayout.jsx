@@ -1,13 +1,18 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar"
-import styles from "./MainLayout.module.css"
+import { Outlet, useLocation } from "react-router-dom";
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
+  const location = useLocation()
+  const isLanding = location.pathname === '/'
+
   return (
-    <div className={styles.layout}>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className={styles.mainContent}>
-        {children}
+      <main className="pt-5">
+        <Outlet />
       </main>
+      {!isLanding && <Footer />}
     </div>
   )
 }
