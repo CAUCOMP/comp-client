@@ -2,16 +2,26 @@ import bgLogo from '@/assets/logo/bgLogo.png'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiMail, FiLock, FiArrowRight } from 'react-icons/fi'
+import { login } from '@/apis/auth'; 
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-
+const handleSubmit = async () => {
+  setError("");
+  try {
+    await login(email, password);
+    console.log("login 성공");
+    navigate('/');
+  } catch (err) {
+    console.log("오류가 발생했습니다:", err);  
+    setError("이메일 또는 비밀번호가 올바르지 않습니다.");
   }
+}
 
   const handleHome = () => {
     navigate('/')
@@ -53,10 +63,16 @@ const LoginPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full h-12 rounded-2xl border border-blue-400/20 px-10 outline-none text-[16px] placeholder:text-white/30"
+                autoComplete="current-password"
             />
         </div>
 
+        {error && (
+          <p className="text-red-400 text-sm text-center">{error}</p>
+        )}
+
         <button 
+            type="button"
             className="w-full h-12 border border-blue-400/20 text-blue-200 rounded-2xl hover:bg-blue-400/20 flex items-center justify-center gap-2 cursor-pointer mt-2"
             onClick={handleSubmit}>
             로그인하기
