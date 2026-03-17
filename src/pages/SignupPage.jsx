@@ -2,16 +2,17 @@ import bgLogo from '@/assets/logo/bgLogo.png'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FiMail, FiLock, FiUser, FiArrowRight, FiShield } from 'react-icons/fi'
-import { verifyEmail } from '@/apis/auth'
+import { signup, verifyEmail } from '@/apis/auth'
 
 const SignupPage = () => {
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
+  const [passwordMessage, setPasswordMessage] = useState("")
 
   const [verify, setVerifyMessage] = useState("")
-  const [isEmailVerified, setIsEmailVerified] = useState("")
+  const [isEmailVerified, setIsEmailVerified] = useState(false)
 
   const navigate = useNavigate()
 
@@ -31,7 +32,26 @@ const SignupPage = () => {
       setIsEmailVerified(false);
     }
   }
-  const handleSubmit = () => {}
+
+  const handleSubmit = async () => {
+
+  if (!isEmailVerified) {
+    setVerifyMessage("이메일 인증을 먼저 해주세요.");
+    return;
+  }
+
+  if (password !== passwordConfirm) {
+    setPasswordMessage("비밀번호가 일치하지 않아요.");
+    return;
+  }
+
+  try {
+    await signup(email, password, name);
+    navigate('/login'); 
+  } catch (err) {
+    console.log(err);
+  }
+}
 
   return (
     <section className="min-h-screen flex flex-col items-center gap-10 relative overflow-hidden justify-center">
@@ -112,6 +132,12 @@ const SignupPage = () => {
             className="w-full h-12 rounded-2xl border border-blue-400/20 px-10 outline-none text-[16px] placeholder:text-white/30"
           />
         </div>
+
+        {passwordMessage && (
+        <p className="text-red-400/70 text-sm mx-10">
+            {passwordMessage}
+        </p>
+        )}
 
         <button
           type="button"

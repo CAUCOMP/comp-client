@@ -47,6 +47,7 @@ export const signup = async (email, password, name) => {
     email,
     password,
     name,
+    studyId: 1,
   });
   return data;
 };
