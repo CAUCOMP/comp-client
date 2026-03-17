@@ -2,6 +2,7 @@ import bgLogo from '@/assets/logo/bgLogo.png'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FiMail, FiLock, FiUser, FiArrowRight, FiShield } from 'react-icons/fi'
+import { verifyEmail } from '@/apis/auth'
 
 const SignupPage = () => {
   const [email, setEmail] = useState("")
@@ -9,9 +10,27 @@ const SignupPage = () => {
   const [password, setPassword] = useState("")
   const [passwordConfirm, setPasswordConfirm] = useState("")
 
+  const [verify, setVerifyMessage] = useState("")
+  const [isEmailVerified, setIsEmailVerified] = useState("")
+
   const navigate = useNavigate()
 
-  const handleVerify = () => {}
+  const handleVerify = async() => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        setVerifyMessage("올바른 이메일 형식을 입력해주세요.");
+        setIsEmailVerified(false);
+        return;  
+    }
+    try {
+      await verifyEmail(email);
+      setVerifyMessage("가입 가능한 이메일이에요.")
+      setIsEmailVerified(true);
+    } catch (err) {
+      setVerifyMessage("등록되지 않은 이메일이에요.");
+      setIsEmailVerified(false);
+    }
+  }
   const handleSubmit = () => {}
 
   return (
@@ -48,11 +67,18 @@ const SignupPage = () => {
           <button
             type="button"
             onClick={handleVerify}
+            disabled={isEmailVerified}
             className="h-12 px-4 border border-blue-400/20 text-blue-200 rounded-2xl hover:bg-blue-400/20 cursor-pointer flex-shrink-0 text-[16px]"
           >
             인증확인
           </button>
         </div>
+
+        {verify && (
+        <p className={`mx-10 text-sm ${isEmailVerified ? "text-blue-300/70" : "text-red-400/70"}`}>
+            {verify}
+        </p>
+        )}
 
         <div className="relative">
           <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-300/40" />

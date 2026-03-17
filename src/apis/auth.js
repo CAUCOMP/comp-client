@@ -42,7 +42,7 @@ export const isLoggedIn = () => {
   return !!localStorage.getItem("accessToken");
 };
 
-export const register = async (email, password, name) => {
+export const signup = async (email, password, name) => {
   const { data } = await axios.post(`${baseURL}/api/auth/signup`, {
     email,
     password,
@@ -50,3 +50,15 @@ export const register = async (email, password, name) => {
   });
   return data;
 };
+
+export const verifyEmail = async (email) => {
+  const { data } = await axios.post(`${baseURL}/api/auth/check-email`, {
+    email
+  })
+
+  if (!data.data.valid) {
+    throw new Error("등록되지 않은 이메일");  
+  }
+
+  return data;
+}
